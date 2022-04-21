@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "pyskel"
+name = "pyaf"
 version = "0.0.0"
 license = "GPL-3.0-only"
 authors = ["netzego <no-reply@github.com>"]
 description = "A skeleton for python projects with poetry"
 readme = "README.md"
-homepage = "https://github.com/netzego/poetskel"
-repository = "git@github.com:netzego/poetskel.git"
+homepage = "https://github.com/netzego/pyaf"
+repository = "git@github.com:netzego/pyaf.git"
 
 [tool.poetry.dependencies]
 python = "^3.10"

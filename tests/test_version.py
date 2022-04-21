@@ -1,5 +1,5 @@
-import pyskel
+import pyaf
 
 
 def test_version():
-    assert pyskel.__version__ == (0, 0, 0)
+    assert pyaf.__version__ == (0, 0, 0)
