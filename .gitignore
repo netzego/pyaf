@@ -1,1 +1,5 @@
 .venv/
+# testfiles
+testfiles/**/*.flac
+testfiles/**/*.mp3
+testfiles/**/*.wav
