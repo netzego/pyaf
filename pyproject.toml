@@ -2,7 +2,7 @@
 name = "pyaf"
 version = "0.0.0"
 license = "GPL-3.0-only"
-authors = ["netzego <no-reply@github.com>"]
+authors = ["netzego <github@netzego.de>"]
 description = "A skeleton for python projects with poetry"
 readme = "README.md"
 homepage = "https://github.com/netzego/pyaf"
