@@ -10,7 +10,7 @@ class Info:
         self._mutobj = obj
 
     def __repr__(self) -> str:
-        return f"Info({type(self._mutobj).__name__}('{self.filename}'))"
+        return f"Info({type(self._mutobj).__name__}('{self._mutobj.filename}'))"
 
     @property
     def bitrate(self) -> int:
