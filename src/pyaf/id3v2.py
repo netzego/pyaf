@@ -18,7 +18,3 @@ class Id3v2(Id3v2Core):
 
     def wipe(self) -> None:
         raise NotImplementedError
-
-
-if __name__ == "__main__":
-    i = Id3v2(MP3("../../testfiles/id3v2/id3v2.mp3"))
