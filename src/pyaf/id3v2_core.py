@@ -56,11 +56,11 @@ class Id3v2Core:
 
     # totaldisc
     @property
-    def totaldisc(self) -> int:
+    def totaldiscs(self) -> int:
         return int(self._mutobj.tags.get("TPOS").text[0].split("/")[1])  # type: ignore
 
-    @totaldisc.setter
-    def totaldisc(self, value: int) -> None:
+    @totaldiscs.setter
+    def totaldiscs(self, value: int) -> None:
         self._mutobj.tags.add(TPOS(encoding=3, text=[f"{self.discnumber}/{value}"]))  # type: ignore
 
     # tracknumber
@@ -74,9 +74,9 @@ class Id3v2Core:
 
     # totaltrack
     @property
-    def totaltrack(self) -> int:
+    def totaltracks(self) -> int:
         return int(self._mutobj.tags.get("TRCK").text[0].split("/")[1])  # type: ignore
 
-    @totaltrack.setter
-    def totaltrack(self, value: int) -> None:
+    @totaltracks.setter
+    def totaltracks(self, value: int) -> None:
         self._mutobj.tags.add(TRCK(encoding=3, text=[f"{self.tracknumber}/{value}"]))  # type: ignore
