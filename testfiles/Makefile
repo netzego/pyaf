@@ -5,10 +5,11 @@ METAFLAC	:= $(shell which metaflac)
 ID3V2		:= $(shell which id3v2)
 XXD			:= $(shell which xxd)
 
-ARTIST		:= "test artist"
-ALBUM		:= "test album"
-COMMENT		:= "test comment"
-TITLE		:= "test title"
+ARTIST		:= "test_artist"
+ALBUM		:= "test_album"
+ALBUMARTIST	:= "test_albumartist"
+COMMENT		:= "test_comment"
+TITLE		:= "test_title"
 YEAR		:= $(shell date +%Y)
 
 EMPTY_DIR	:= empty
@@ -106,8 +107,27 @@ id3v2: notags
 	mkdir $(ID3V2_DIR)
 	cp $(NOTAGS_MP3) $(ID3V2_MP3)
 	cp $(NOTAGS_WAV) $(ID3V2_WAV)
-	$(ID3V2) -2 -A $(ARTIST) -a $(ALBUM) -c $(COMMENT) -t $(TITLE) -y $(YEAR) -T 1/1 $(ID3V2_MP3)
-	$(ID3V2) -2 -A $(ARTIST) -a $(ALBUM) -c $(COMMENT) -t $(TITLE) -y $(YEAR) -T 1/1 $(ID3V2_WAV)
+	# TPE2
+	$(ID3V2) -2 \
+		-A $(ARTIST) \
+		-a $(ALBUM) \
+		-c $(COMMENT) \
+		-t $(TITLE) \
+		-y $(YEAR) \
+		-T 1/1 \
+		--TPOS 1/1 \
+		--TPE2 $(ALBUMARTIST) \
+		$(ID3V2_MP3)
+	$(ID3V2) -2 \
+		-A $(ARTIST) \
+		-a $(ALBUM) \
+		-c $(COMMENT) \
+		-t $(TITLE) \
+		-y $(YEAR) \
+		-T 1/1 \
+		--TPOS 1/1 \
+		--TPE2 $(ALBUMARTIST) \
+		$(ID3V2_WAV)
 
 vorbis: notags
 	mkdir $(VORBIS_DIR)
@@ -115,11 +135,14 @@ vorbis: notags
 	$(METAFLAC) \
 		--set-tag=ARTIST=$(ARTIST) \
 		--set-tag=ALBUM=$(ALBUM) \
+		--set-tag=ALBUMARTIST=$(ALBUMARTIST) \
 		--set-tag=COMMENT=$(COMMENT) \
 		--set-tag=TITLE=$(TITLE) \
 		--set-tag=YEAR=$(YEAR) \
 		--set-tag=TRACKNUMBER=1 \
 		--set-tag=TOTALTRACKS=1 \
+		--set-tag=DISCNUMBER=1 \
+		--set-tag=TOTALDISCS=1 \
 		$(VORBIS_FLAC)
 
 symlink: id3v2 vorbis
