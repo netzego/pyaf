@@ -16,7 +16,7 @@ distclean:
 	rm -fr $(VENV)
 
 test:
-	$(PYTEST) tests/
+	$(PYTEST) -v tests/
 
 init: venv install
 
