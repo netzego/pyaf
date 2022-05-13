@@ -1,5 +1,3 @@
-from mutagen.flac import FLAC
-
 from pyaf.vorbis_core import VorbisCore
 
 
@@ -15,7 +13,3 @@ class Vorbis(VorbisCore):
 
     def wipe(self) -> None:
         raise NotImplementedError
-
-
-if __name__ == "__main__":
-    v = Vorbis(FLAC("../../testfiles/vorbis/vorbis.flac"))
