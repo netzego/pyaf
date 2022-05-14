@@ -15,3 +15,7 @@ class Vorbis(VorbisCore):
 
     def wipe(self) -> None:
         raise NotImplementedError
+
+    @property
+    def version(self) -> tuple[int]:
+        return self._mutobj.tags.version  # type: ignore

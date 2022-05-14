@@ -18,3 +18,7 @@ class Id3(Id3Core):
 
     def wipe(self) -> None:
         raise NotImplementedError
+
+    @property
+    def version(self) -> tuple[int]:
+        return self._mutobj.tags.version  # type: ignore
