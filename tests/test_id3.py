@@ -19,9 +19,19 @@ def test_Id3__attrs():
     assert hasattr(Id3, "totaldiscs")
 
 
+def test_Id3__Id3Core_getter_album_notags(testfile):
+    mp3 = Id3(MP3(testfile("notags/notags.mp3")))
+    assert mp3.album == None
+
+
 def test_Id3__Id3Core_getter_album(testfile):
     mp3 = Id3(MP3(testfile("id3v2/id3v2.mp3")))
     assert mp3.album == "test_album"
+
+
+def test_Id3__Id3Core_getter_albumartist_notags(testfile):
+    mp3 = Id3(MP3(testfile("notags/notags.mp3")))
+    assert mp3.albumartist == None
 
 
 def test_Id3__Id3Core_getter_albumartist(testfile):
@@ -29,9 +39,19 @@ def test_Id3__Id3Core_getter_albumartist(testfile):
     assert mp3.albumartist == "test_albumartist"
 
 
+def test_Id3__Id3Core_getter_title_notags(testfile):
+    mp3 = Id3(MP3(testfile("notags/notags.mp3")))
+    assert mp3.title == None
+
+
 def test_Id3__Id3Core_getter_title(testfile):
     mp3 = Id3(MP3(testfile("id3v2/id3v2.mp3")))
     assert mp3.title == "test_title"
+
+
+def test_Id3__Id3Core_getter_tracknumber_notags(testfile):
+    mp3 = Id3(MP3(testfile("notags/notags.mp3")))
+    assert mp3.tracknumber == None
 
 
 def test_Id3__Id3Core_getter_tracknumber(testfile):
@@ -39,14 +59,29 @@ def test_Id3__Id3Core_getter_tracknumber(testfile):
     assert mp3.tracknumber == 1
 
 
+def test_Id3__Id3Core_getter_totaltracks_notags(testfile):
+    mp3 = Id3(MP3(testfile("notags/notags.mp3")))
+    assert mp3.totaltracks == None
+
+
 def test_Id3__Id3Core_getter_totaltracks(testfile):
     mp3 = Id3(MP3(testfile("id3v2/id3v2.mp3")))
     assert mp3.totaltracks == 1
 
 
+def test_Id3__Id3Core_getter_discnumber_notags(testfile):
+    mp3 = Id3(MP3(testfile("notags/notags.mp3")))
+    assert mp3.discnumber == None
+
+
 def test_Id3__Id3Core_getter_discnumber(testfile):
     mp3 = Id3(MP3(testfile("id3v2/id3v2.mp3")))
     assert mp3.discnumber == 1
+
+
+def test_Id3__Id3Core_getter_totaldiscs_notags(testfile):
+    mp3 = Id3(MP3(testfile("notags/notags.mp3")))
+    assert mp3.totaldiscs == None
 
 
 def test_Id3__Id3Core_getter_totaldiscs(testfile):
