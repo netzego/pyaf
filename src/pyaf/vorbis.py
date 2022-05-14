@@ -1,3 +1,5 @@
+from mutagen.flac import FLAC
+
 from pyaf.vorbis_core import VorbisCore
 
 
