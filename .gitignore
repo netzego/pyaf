@@ -1,2 +1,3 @@
 .venv/
 testfiles/*
+**/.pytest_cache/
