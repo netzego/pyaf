@@ -1,8 +1,12 @@
+from typing import Optional
+
+
 class VorbisCore:
     # album
     @property
-    def album(self) -> str:
-        return self._mutobj.tags["ALBUM"][0]  # type: ignore
+    def album(self) -> Optional[str]:
+        if "ALBUM" in self._mutobj.tags:  # type: ignore
+            return self._mutobj.tags["ALBUM"][0]  # type: ignore
 
     @album.setter
     def album(self, value: str) -> None:
@@ -10,8 +14,9 @@ class VorbisCore:
 
     # albumartist
     @property
-    def albumartist(self) -> str:
-        return self._mutobj.tags["ALBUMARTIST"][0]  # type: ignore
+    def albumartist(self) -> Optional[str]:
+        if "ALBUMARTIST" in self._mutobj.tags:  # type: ignore
+            return self._mutobj.tags["ALBUMARTIST"][0]  # type: ignore
 
     @albumartist.setter
     def albumartist(self, value: str) -> None:
@@ -19,8 +24,9 @@ class VorbisCore:
 
     # artist
     @property
-    def artist(self) -> str:
-        return self._mutobj.tags["ARTIST"][0]  # type: ignore
+    def artist(self) -> Optional[str]:
+        if "ARTIST" in self._mutobj.tags:  # type: ignore
+            return self._mutobj.tags["ARTIST"][0]  # type: ignore
 
     @artist.setter
     def artist(self, value: str) -> None:
@@ -28,8 +34,9 @@ class VorbisCore:
 
     # title
     @property
-    def title(self) -> str:
-        return self._mutobj.tags["TITLE"][0]  # type: ignore
+    def title(self) -> Optional[str]:
+        if "TITLE" in self._mutobj.tags:  # type: ignore
+            return self._mutobj.tags["TITLE"][0]  # type: ignore
 
     @title.setter
     def title(self, value: str) -> None:
@@ -37,8 +44,9 @@ class VorbisCore:
 
     # tracknumber
     @property
-    def tracknumber(self) -> int:
-        return int(self._mutobj.tags["TRACKNUMBER"][0])  # type: ignore
+    def tracknumber(self) -> Optional[int]:
+        if "TRACKNUMBER" in self._mutobj.tags:  # type: ignore
+            return int(self._mutobj.tags["TRACKNUMBER"][0])  # type: ignore
 
     @tracknumber.setter
     def tracknumber(self, value: int) -> None:
@@ -46,8 +54,9 @@ class VorbisCore:
 
     # totaltracks
     @property
-    def totaltracks(self) -> int:
-        return int(self._mutobj.tags["TOTALTRACKS"][0])  # type: ignore
+    def totaltracks(self) -> Optional[int]:
+        if "TOTALTRACKS" in self._mutobj.tags:  # type: ignore
+            return int(self._mutobj.tags["TOTALTRACKS"][0])  # type: ignore
 
     @totaltracks.setter
     def totaltracks(self, value: int) -> None:
@@ -55,8 +64,9 @@ class VorbisCore:
 
     # discnumber
     @property
-    def discnumber(self) -> int:
-        return int(self._mutobj.tags["DISCNUMBER"][0])  # type: ignore
+    def discnumber(self) -> Optional[int]:
+        if "DISCNUMBER" in self._mutobj.tags:  # type: ignore
+            return int(self._mutobj.tags["DISCNUMBER"][0])  # type: ignore
 
     @discnumber.setter
     def discnumber(self, value: int) -> None:
@@ -64,8 +74,9 @@ class VorbisCore:
 
     # totaldisccs
     @property
-    def totaldiscs(self) -> int:
-        return int(self._mutobj.tags["TOTALDISCS"][0])  # type: ignore
+    def totaldiscs(self) -> Optional[int]:
+        if "TOTALDISCS" in self._mutobj.tags:  # type: ignore
+            return int(self._mutobj.tags["TOTALDISCS"][0])  # type: ignore
 
     @totaldiscs.setter
     def totaldiscs(self, value: int) -> None:
