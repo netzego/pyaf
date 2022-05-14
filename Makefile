@@ -12,8 +12,14 @@ venv: $(VENV)/pyvenv.cfg
 install:
 	$(POETRY) install
 
-distclean:
+clean:
+	fd --no-ignore --hidden --type d .pytest_cache -x rm -fr {}
+
+distclean: clean
 	rm -fr $(VENV)
+
+testfiles:
+	make -C testfiles
 
 test:
 	$(PYTEST) -v tests/
@@ -25,4 +31,6 @@ init: venv install
 	install \
 	distclean \
 	test \
-	init
+	init \
+	clean \
+	testfiles
