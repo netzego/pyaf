@@ -100,17 +100,34 @@ id3v1: notags
 	mkdir $(ID3V1_DIR)
 	cp $(NOTAGS_MP3) $(ID3V1_MP3)
 	cp $(NOTAGS_WAV) $(ID3V1_WAV)
-	$(ID3V2) -1 -A $(ARTIST) -a $(ALBUM) -c $(COMMENT) -t $(TITLE) -y $(YEAR) -T 1/1 $(ID3V1_MP3)
-	$(ID3V2) -1 -A $(ARTIST) -a $(ALBUM) -c $(COMMENT) -t $(TITLE) -y $(YEAR) -T 1/1 $(ID3V1_WAV)
+	$(ID3V2) -1 \
+		-A $(ALBUM) \
+		-a $(ARTIST) \
+		-c $(COMMENT) \
+		-t $(TITLE) \
+		-y $(YEAR) \
+		-T 1/1 \
+		--TPOS 1/1 \
+		--TPE2 $(ALBUMARTIST) \
+		$(ID3V1_MP3)
+	$(ID3V2) -1 \
+		-A $(ALBUM) \
+		-a $(ARTIST) \
+		-c $(COMMENT) \
+		-t $(TITLE) \
+		-y $(YEAR) \
+		-T 1/1 \
+		--TPOS 1/1 \
+		--TPE2 $(ALBUMARTIST) \
+		$(ID3V1_WAV)
 
 id3v2: notags
 	mkdir $(ID3V2_DIR)
 	cp $(NOTAGS_MP3) $(ID3V2_MP3)
 	cp $(NOTAGS_WAV) $(ID3V2_WAV)
-	# TPE2
 	$(ID3V2) -2 \
-		-A $(ARTIST) \
-		-a $(ALBUM) \
+		-A $(ALBUM) \
+		-a $(ARTIST) \
 		-c $(COMMENT) \
 		-t $(TITLE) \
 		-y $(YEAR) \
@@ -119,8 +136,8 @@ id3v2: notags
 		--TPE2 $(ALBUMARTIST) \
 		$(ID3V2_MP3)
 	$(ID3V2) -2 \
-		-A $(ARTIST) \
-		-a $(ALBUM) \
+		-A $(ALBUM) \
+		-a $(ARTIST) \
 		-c $(COMMENT) \
 		-t $(TITLE) \
 		-y $(YEAR) \
