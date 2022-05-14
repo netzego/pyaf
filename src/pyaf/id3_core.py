@@ -8,7 +8,7 @@ from mutagen.id3 import (
 )
 
 
-class Id3v2Core:
+class Id3Core:
     # album
     @property
     def album(self) -> str:
