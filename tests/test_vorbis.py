@@ -10,6 +10,7 @@ def test_Vorbis__init(testfile):
 def test_Vorbis__attrs():
     assert hasattr(Vorbis, "save")
     assert hasattr(Vorbis, "wipe")
+    assert hasattr(Vorbis, "version")
     assert hasattr(Vorbis, "album")
     assert hasattr(Vorbis, "albumartist")
     assert hasattr(Vorbis, "title")

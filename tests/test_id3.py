@@ -10,6 +10,7 @@ def test_Id3__init(testfile):
 def test_Id3__attrs():
     assert hasattr(Id3, "save")
     assert hasattr(Id3, "wipe")
+    assert hasattr(Id3, "version")
     assert hasattr(Id3, "album")
     assert hasattr(Id3, "albumartist")
     assert hasattr(Id3, "title")
