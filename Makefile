@@ -21,7 +21,7 @@ distclean: clean
 testfiles:
 	make -C testfiles
 
-test:
+test: testfiles
 	$(PYTEST) -v tests/
 
 init: venv install
