@@ -63,7 +63,7 @@ class Id3Core:
 
     @tracknumber.setter
     def tracknumber(self, value: int) -> None:
-        self._mutobj.tags.add(TRCK(encoding=3, text=[f"{value}/{self.totaltrack}"]))  # type: ignore
+        self._mutobj.tags.add(TRCK(encoding=3, text=[f"{value}/{self.totaltracks}"]))  # type: ignore
 
     # totaltrack
     @property
@@ -95,7 +95,7 @@ class Id3Core:
 
     @discnumber.setter
     def discnumber(self, value: int) -> None:
-        self._mutobj.tags.add(TPOS(encoding=3, text=[f"{value}/{self.totaldisc}"]))  # type: ignore
+        self._mutobj.tags.add(TPOS(encoding=3, text=[f"{value}/{self.totaldiscs}"]))  # type: ignore
 
     # totaldisc
     @property
