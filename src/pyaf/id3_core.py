@@ -49,26 +49,6 @@ class Id3Core:
     def title(self, value: str) -> None:
         self._mutobj.tags.add(TIT2(encoding=3, text=[value]))  # type: ignore
 
-    # discnumber
-    @property
-    def discnumber(self) -> int | None:
-        if self._mutobj.tags and "TPOS" in self._mutobj.tags:  # type: ignore
-            return int(self._mutobj.tags.get("TPOS").text[0].split("/")[0])  # type: ignore
-
-    @discnumber.setter
-    def discnumber(self, value: int) -> None:
-        self._mutobj.tags.add(TPOS(encoding=3, text=[f"{value}/{self.totaldisc}"]))  # type: ignore
-
-    # totaldisc
-    @property
-    def totaldiscs(self) -> int | None:
-        if self._mutobj.tags and "TPOS" in self._mutobj.tags:  # type: ignore
-            return int(self._mutobj.tags.get("TPOS").text[0].split("/")[1])  # type: ignore
-
-    @totaldiscs.setter
-    def totaldiscs(self, value: int) -> None:
-        self._mutobj.tags.add(TPOS(encoding=3, text=[f"{self.discnumber}/{value}"]))  # type: ignore
-
     # tracknumber
     @property
     def tracknumber(self) -> int | None:
@@ -88,3 +68,23 @@ class Id3Core:
     @totaltracks.setter
     def totaltracks(self, value: int) -> None:
         self._mutobj.tags.add(TRCK(encoding=3, text=[f"{self.tracknumber}/{value}"]))  # type: ignore
+
+    # discnumber
+    @property
+    def discnumber(self) -> int | None:
+        if self._mutobj.tags and "TPOS" in self._mutobj.tags:  # type: ignore
+            return int(self._mutobj.tags.get("TPOS").text[0].split("/")[0])  # type: ignore
+
+    @discnumber.setter
+    def discnumber(self, value: int) -> None:
+        self._mutobj.tags.add(TPOS(encoding=3, text=[f"{value}/{self.totaldisc}"]))  # type: ignore
+
+    # totaldisc
+    @property
+    def totaldiscs(self) -> int | None:
+        if self._mutobj.tags and "TPOS" in self._mutobj.tags:  # type: ignore
+            return int(self._mutobj.tags.get("TPOS").text[0].split("/")[1])  # type: ignore
+
+    @totaldiscs.setter
+    def totaldiscs(self, value: int) -> None:
+        self._mutobj.tags.add(TPOS(encoding=3, text=[f"{self.discnumber}/{value}"]))  # type: ignore
