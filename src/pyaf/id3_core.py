@@ -52,8 +52,14 @@ class Id3Core:
     # tracknumber
     @property
     def tracknumber(self) -> int | None:
-        if self._mutobj.tags and "TRCK" in self._mutobj.tags:  # type: ignore
-            return int(self._mutobj.tags.get("TRCK").text[0].split("/")[0])  # type: ignore
+        try:
+            if self._mutobj.tags and "TRCK" in self._mutobj.tags:  # type: ignore
+                return int(self._mutobj.tags.get("TRCK").text[0].split("/")[0])  # type: ignore
+
+        except ValueError:
+            # TODO: warn msg -- malformed frame
+            # TODO: self.tracknumber = 0
+            return 0
 
     @tracknumber.setter
     def tracknumber(self, value: int) -> None:
@@ -62,8 +68,14 @@ class Id3Core:
     # totaltrack
     @property
     def totaltracks(self) -> int | None:
-        if self._mutobj.tags and "TRCK" in self._mutobj.tags:  # type: ignore
-            return int(self._mutobj.tags.get("TRCK").text[0].split("/")[1])  # type: ignore
+        try:
+            if self._mutobj.tags and "TRCK" in self._mutobj.tags:  # type: ignore
+                return int(self._mutobj.tags.get("TRCK").text[0].split("/")[1])  # type: ignore
+
+        except (IndexError, ValueError):
+            # TODO: warn msg -- malformed frame
+            # TODO: self.totaltracks = 0
+            return 0
 
     @totaltracks.setter
     def totaltracks(self, value: int) -> None:
@@ -72,8 +84,14 @@ class Id3Core:
     # discnumber
     @property
     def discnumber(self) -> int | None:
-        if self._mutobj.tags and "TPOS" in self._mutobj.tags:  # type: ignore
-            return int(self._mutobj.tags.get("TPOS").text[0].split("/")[0])  # type: ignore
+        try:
+            if self._mutobj.tags and "TPOS" in self._mutobj.tags:  # type: ignore
+                return int(self._mutobj.tags.get("TPOS").text[0].split("/")[0])  # type: ignore
+
+        except ValueError:
+            # TODO: warn msg -- malformed frame
+            # TODO: self.discnumber = 0
+            return 0
 
     @discnumber.setter
     def discnumber(self, value: int) -> None:
@@ -82,8 +100,14 @@ class Id3Core:
     # totaldisc
     @property
     def totaldiscs(self) -> int | None:
-        if self._mutobj.tags and "TPOS" in self._mutobj.tags:  # type: ignore
-            return int(self._mutobj.tags.get("TPOS").text[0].split("/")[1])  # type: ignore
+        try:
+            if self._mutobj.tags and "TPOS" in self._mutobj.tags:  # type: ignore
+                return int(self._mutobj.tags.get("TPOS").text[0].split("/")[1])  # type: ignore
+
+        except (IndexError, ValueError):
+            # TODO: warn msg -- malformed frame
+            # TODO: self.totaldiscs = 0
+            return 0
 
     @totaldiscs.setter
     def totaldiscs(self, value: int) -> None:
