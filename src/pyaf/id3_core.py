@@ -1,5 +1,3 @@
-from typing import Optional
-
 from mutagen.id3 import (
     TALB,
     TIT2,
@@ -13,7 +11,7 @@ from mutagen.id3 import (
 class Id3Core:
     # album
     @property
-    def album(self) -> Optional[str]:
+    def album(self) -> str | None:
         if self._mutobj.tags and "TALB" in self._mutobj.tags:  # type: ignore
             return self._mutobj.tags.get("TALB").text[0]  # type: ignore
 
@@ -23,7 +21,7 @@ class Id3Core:
 
     # albumartist
     @property
-    def albumartist(self) -> Optional[str]:
+    def albumartist(self) -> str | None:
         if self._mutobj.tags and "TPE2" in self._mutobj.tags:  # type: ignore
             return self._mutobj.tags.get("TPE2").text[0]  # type: ignore
 
@@ -33,7 +31,7 @@ class Id3Core:
 
     # artist
     @property
-    def artist(self) -> Optional[str]:
+    def artist(self) -> str | None:
         if self._mutobj.tags and "TOPE" in self._mutobj.tags:  # type: ignore
             return self._mutobj.tags.get("TOPE").text[0]  # type: ignore
 
@@ -43,7 +41,7 @@ class Id3Core:
 
     # title
     @property
-    def title(self) -> Optional[str]:
+    def title(self) -> str | None:
         if self._mutobj.tags and "TIT2" in self._mutobj.tags:  # type: ignore
             return self._mutobj.tags.get("TIT2").text[0]  # type: ignore
 
@@ -53,7 +51,7 @@ class Id3Core:
 
     # discnumber
     @property
-    def discnumber(self) -> Optional[int]:
+    def discnumber(self) -> int | None:
         if self._mutobj.tags and "TPOS" in self._mutobj.tags:  # type: ignore
             return int(self._mutobj.tags.get("TPOS").text[0].split("/")[0])  # type: ignore
 
@@ -63,7 +61,7 @@ class Id3Core:
 
     # totaldisc
     @property
-    def totaldiscs(self) -> Optional[int]:
+    def totaldiscs(self) -> int | None:
         if self._mutobj.tags and "TPOS" in self._mutobj.tags:  # type: ignore
             return int(self._mutobj.tags.get("TPOS").text[0].split("/")[1])  # type: ignore
 
@@ -73,7 +71,7 @@ class Id3Core:
 
     # tracknumber
     @property
-    def tracknumber(self) -> Optional[int]:
+    def tracknumber(self) -> int | None:
         if self._mutobj.tags and "TRCK" in self._mutobj.tags:  # type: ignore
             return int(self._mutobj.tags.get("TRCK").text[0].split("/")[0])  # type: ignore
 
@@ -83,7 +81,7 @@ class Id3Core:
 
     # totaltrack
     @property
-    def totaltracks(self) -> Optional[int]:
+    def totaltracks(self) -> int | None:
         if self._mutobj.tags and "TRCK" in self._mutobj.tags:  # type: ignore
             return int(self._mutobj.tags.get("TRCK").text[0].split("/")[1])  # type: ignore
 
