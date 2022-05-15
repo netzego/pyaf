@@ -10,6 +10,10 @@ class Id3(Id3Core):
     def __init__(self, mutobj: Union[MP3, WAVE]) -> None:
         self._mutobj = mutobj
 
+        # enforce tag file struct by calling `add_tags` function
+        if not self._mutobj.tags:
+            self._mutobj.add_tags()
+
     def __repr__(self) -> str:
         return f"Id3({type(self._mutobj).__name__}('{self._mutobj.filename}'))"
 
